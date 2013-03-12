@@ -1,3 +1,6 @@
+This post is rendered from literate Haskell.  I recommend doing the exercises
+inline, so [use the source](https://github.com/luqui/typeclass-constructions/blob/master/01_f-algebras.lhs).
+
 > {-# LANGUAGE DeriveFunctor
 >            , DeriveFoldable
 >            , DeriveTraversable
@@ -75,17 +78,12 @@ function of type `f m -> m`.  With some squinting, we arrive at:
 > mappendF :: Algebra MonoidF m -> (m -> m -> m)
 > mappendF alg x y = alg (MAppend x y)
 
-**Exercise 1:** work out the functor `NumF` over which
-[`Num`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html3t:Num)
-instances are F-algebras, and write the methods of `Num` in terms of it.
+**Exercise 1:** work out the functor `NumF` over which [`Num`] instances are
+F-algebras, and write the methods of `Num` in terms of it.
 
-**Exercise 2:** for each of the standard classes 
-[`Eq`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Eq), 
-[`Read`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Read), 
-[`Show`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Show), 
-[`Bounded`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Bounded),
-and [`Integral`](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Integral),work out whether they are expressible as F-algebras.  If so, give the functor; if not, explain or 
-prove why not.
+**Exercise 2:** for each of the standard classes [`Eq`], [`Read`], [`Show`],
+[`Bounded`], and [`Integral`], work out whether they are expressible as
+F-algebras.  If so, give the functor; if not, explain or prove why not.
 
 **Exercise 3:** write a function `toMonoidAlg` which finds the `MonoidF`-algebra
 for a given instance `m` of the `Monoid` class.
@@ -177,8 +175,8 @@ free monad over a functor:
 >     Pure a >>= t = t a
 >     Effect f >>= t = Effect (fmap (>>= t) f)
 
-([Church-encoding](http://hackage.haskell.org/package/free-functors-0.1.1) this
-gives better performance, but I'm using this version for expository purposes)
+([Church-encoding][1] this gives better performance, but I'm using this version
+for expository purposes)
 
 `Free f a` can be interpreted as a syntax tree over the typeclass formed by `f`
 with free variables in `a`.  This is also called an "initial algebra", a term
@@ -202,3 +200,11 @@ allows infinitely large terms.  Then, using an infinite term, show how this
 isomorphism fails. 
 
 *Next time: F-Coalgebras*
+
+  [`Num`]:      http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html3t:Num
+  [`Eq`]:       http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Eq
+  [`Read`]:     http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Read
+  [`Show`]:     http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Show
+  [`Bounded`]:  http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Bounded
+  [`Integral`]: http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Integral
+  [1]:          http://hackage.haskell.org/package/free-functors-0.1.1
