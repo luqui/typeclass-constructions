@@ -71,10 +71,10 @@ function of type `f m -> m`.  With some squinting, we arrive at:
 > data MonoidF m
 >     = MEmpty
 >     | MAppend m m
->
+
 > memptyF :: Algebra MonoidF m -> m
 > memptyF alg = alg MEmpty 
->
+
 > mappendF :: Algebra MonoidF m -> (m -> m -> m)
 > mappendF alg x y = alg (MAppend x y)
 
@@ -135,7 +135,7 @@ demonstrated by the following construction:
 
 > data (f :+: g) a = InL (f a) | InR (g a)
 >     deriving (Functor, Foldable, Traversable)
->
+
 > coproductAlg :: (Functor f, Functor g) 
 >              => Algebra f a -> Algebra g a -> Algebra (f :+: g) a
 > coproductAlg falg _ (InL fa) = falg fa
@@ -169,7 +169,7 @@ free monad over a functor:
 >     = Pure a
 >     | Effect (f (Free f a))
 >     deriving (Functor, Foldable, Traversable)
->
+
 > instance (Functor f) => Monad (Free f) where
 >     return = Pure
 >     Pure a >>= t = t a
