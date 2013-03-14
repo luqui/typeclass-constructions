@@ -201,7 +201,7 @@ isomorphism fails.
 
 *Next time: F-Coalgebras*
 
-  [`Num`]:      http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html3t:Num
+  [`Num`]:      http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Num
   [`Eq`]:       http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Eq
   [`Read`]:     http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Read
   [`Show`]:     http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html#t:Show

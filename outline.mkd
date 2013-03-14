@@ -1,6 +1,7 @@
 * Part 1: F-Algebras
     * Monoid, Num, Bounded, Fractional classes
     * Pair, Applicative, Free constructions
+    * Fix initiality error by Derek Elkins
 * Part 2: F-Coalgebras
     * Show, RandomGen classes
     * OOP (relationship to inheritance, open fixed points)
