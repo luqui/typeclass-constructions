@@ -61,6 +61,12 @@ coprodCoalg :: (Functor f, Functor g)
 coprodCoalg fcoalga _ (Left a) = InL (fmap Left (fcoalga a))
 coprodCoalg _ gcoalgb (Right b) = InR (fmap Right (gcoalgb b))
 
+-- unknown dual to pairCoalg
+-- eitherAlg :: (Traversable f) => Algebra f a -> Algebra f b -> Algebra f (Either a b)
+
+pairCoalg :: (Applicative f) => Coalgebra f a -> Coalgebra f b -> Coalgebra f (a,b)
+pairCoalg coalga coalgb (a,b) = liftA2 (,) (coalga a) (coalgb b)
+
 
 applicativeAlg :: (Traversable f, Applicative t) => Algebra f a -> Algebra f (t a)
 applicativeAlg alg = fmap alg . sequenceA
